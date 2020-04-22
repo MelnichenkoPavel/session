@@ -1,0 +1,23 @@
+phantom:
+  address: 127.0.0.1:8088
+  load_profile:
+    load_type: rps
+    schedule: step(1, 6000, 500, 10s)
+#    schedule: step(1, 3000, 250, 10s)
+  header_http: "1.1"
+  headers:
+  - "[Host: localhost]"
+  - "[Connection: close]"
+  uris:
+  - "/randomRead"
+#  - "/randomWrite"
+console:
+  enabled: true
+telegraf:
+  enabled: false
+overload:
+  enabled: true
+  package: yandextank.plugins.DataUploader
+  token_file: overload_token.txt
+  job_name: session_redis_read
+#  job_name: session_redis_write
